@@ -1,9 +1,6 @@
 from fastapi import FastAPI
-from fastapi import HTTPException
-from pydantic import BaseModel
-import pandas as pd
 import joblib
-from fastapi import Request, Query
+from fastapi import Request
 
 # Load the trained Random Forest Classifier model
 rf = joblib.load("rf_model.pkl")
@@ -11,12 +8,6 @@ dt = joblib.load("dt_model.pkl")
 knn = joblib.load("knn_model.pkl")
 sv = joblib.load("sv_model.pkl")
 
-# Define the request input model
-class LoginRequest(BaseModel):
-    email: str
-    password: str
-    login_time: int
-    ip_addr: str
 
 
 

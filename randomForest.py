@@ -9,14 +9,9 @@ import pickle
 df = pd.read_csv("login_data_updated.csv")
 
 # Preprocess the data to convert categorical variables into numerical variables
-# df["Email"] = pd.factorize(df["Email"])[0]
-# df["Password"] = pd.factorize(df["Password"])[0]
 df["IP_Addr"] = pd.factorize(df["IP_Addr"])[0]
 
-# print(df)
-# Split the data into training and testing sets
-# train_data = df[:9900]
-# test_data = df[9900:]
+
 
 train_data,test_data=df,df
 
