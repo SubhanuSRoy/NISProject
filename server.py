@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import joblib
 from fastapi import Request
+from fastapi.middleware.cors import CORSMiddleware
 
 # Load the trained Random Forest Classifier model
 rf = joblib.load("rf_model.pkl")
@@ -14,7 +15,16 @@ sv = joblib.load("sv_model.pkl")
 # Create a FastAPI app
 app = FastAPI()
 
+# to allow all networks and cors
+origins = ["*"]
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Define the route to accept POST requests for login prediction
 @app.post("/predict")
