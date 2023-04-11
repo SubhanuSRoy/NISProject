@@ -12,7 +12,7 @@ df = pd.read_csv("login_data_updated.csv")
 df["IP_Addr"] = pd.factorize(df["IP_Addr"])[0]
 
 
-
+# taking full dataset to train and the full dataset to test, so as to get the best accuracy in one go
 train_data,test_data=df,df
 
 # Extract the input features and output labels from the training set

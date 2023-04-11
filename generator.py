@@ -2,7 +2,7 @@ import random
 import csv
 
 # Define the email, password, and IP_Addr lists for generating random data
-ip_addresses = ["182.79.4.254", "10.0.0.1", "172.16.0.1", "182.79.4.254", "182.79.4.254"]
+ip_addresses = ["106.197.79.14", "10.0.0.1", "172.16.0.1", "106.197.79.14", "106.197.79.14"]
 
 # Define the time ranges for generating random login times
 time_ranges = [("06:00:00", "12:00:00"), ("18:00:00", "00:00:00"), ("00:00:00", "06:00:00")]
@@ -17,7 +17,7 @@ for i in range(10000):
     password = "pass123"
     ip_address = random.choice(ip_addresses)
     login_time = random.randint(1, 24)
-    if (ip_address != "182.79.4.254" and login_time not in [8, 9, 10, 11])  or random.random()<alert_prob:
+    if (ip_address != "106.197.79.14" and login_time not in [8, 9, 10, 11])  or random.random()<alert_prob:
         status = "alert"
     else:
         status = "normal"
