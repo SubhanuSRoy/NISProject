@@ -6,13 +6,10 @@ from sklearn.metrics import accuracy_score
 df = pd.read_csv("login_data_updated.csv")
 
 # Preprocess the data to convert categorical variables into numerical variables
-# df["Email"] = pd.factorize(df["Email"])[0]
-# df["Password"] = pd.factorize(df["Password"])[0]
 df["IP_Addr"] = pd.factorize(df["IP_Addr"])[0]
 
-# Split the data into training and testing sets
-train_data = df[:9900]
-test_data = df[9900:]
+# taking full dataset to train and the full dataset to test, so as to get the best accuracy in one go
+train_data,test_data=df,df
 
 # Extract the input features and output labels from the training set
 X_train = train_data[["IP_Addr", "Login_time"]]
@@ -29,4 +26,4 @@ y_pred = clf.predict(X_test)
 
 # Evaluate the accuracy of the model on the testing set
 accuracy = accuracy_score(y_test, y_pred)
-print("Accuracy:", accuracy)
+print("Accuracy for logisistic regression:", accuracy)

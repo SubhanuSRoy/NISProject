@@ -3,7 +3,7 @@ import joblib
 from fastapi import Request
 from fastapi.middleware.cors import CORSMiddleware
 
-# Load the trained Random Forest Classifier model
+# Load the trained models
 rf = joblib.load("rf_model.pkl")
 dt = joblib.load("dt_model.pkl")
 knn = joblib.load("knn_model.pkl")
@@ -30,21 +30,17 @@ app.add_middleware(
 @app.post("/predict")
 async def predict_login(request: Request):
 
-    # Extract the input features from the request
-    # Email = request["email"]
-    # Password = request["password"]
 
+    # convert request to from json to dictionary to work in python
     print(await request.body())
     request = await request.json()
     request = dict(request)
 
+    # Extract the input features from the request
     Login_time = request["login_time"]
     IP_Addr = request["ip_addr"]
 
     # Preprocess the input features to convert categorical variables into numerical variables
-    # Email = pd.factorize([Email])[0][0]
-    # Password = pd.factorize([Password])[0][0]
-    # IP_Addr = pd.factorize([IP_Addr])[0][0]
 
     if(IP_Addr == "182.79.4.254"):
         IP_Addr=0

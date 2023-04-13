@@ -28,7 +28,7 @@ y_pred = clf.predict(X_test)
 
 # Evaluate the accuracy of the model on the testing set
 accuracy = accuracy_score(y_test, y_pred)
-print("Accuracy:", accuracy)
+print("Accuracy for support vector:", accuracy)
 
 # Save the trained model as a pickle file
 pickle.dump(clf, open('sv_model.pkl', 'wb'))
